@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,6 +9,29 @@
     <title>Document</title>
 </head>
 <body>
+<?php
 
+use controller\BlogController;
+include "controller/BlogController.php";
+include "model/Blog.php";
+include "model/BlogManager.php";
+include "model/database/DBconnect.php";
+$controller=new BlogController();
+$page=$_GET['page']?$_GET['page']:NULL;
+switch ($page){
+    case 'add':
+        $controller->add();
+        break;
+    case 'delete':
+        $controller->delete();
+        break;
+    case 'update':
+        $controller->update();
+        break;
+    default:
+        $controller->index();
+        break;
+}
+?>
 </body>
 </html>
